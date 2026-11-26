@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <!-- K letter — bold, optimized for 24px activity bar -->
+  <path d="M7 4v16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M7 12l8-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M7 12l8 8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+  <!-- small switch dot -->
+  <circle cx="18" cy="12" r="1.8" fill="currentColor"/>
+</svg>

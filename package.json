@@ -1,0 +1,217 @@
+{
+  "name": "kiro-account-switcher",
+  "displayName": "%ext.displayName%",
+  "description": "%ext.description%",
+  "version": "2.0.0",
+  "publisher": "local",
+  "license": "MIT",
+  "icon": "media/icon-128.svg",
+  "keywords": [
+    "kiro",
+    "account",
+    "switcher",
+    "multi-account",
+    "quota",
+    "usage"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "kiro-account-switcher",
+          "title": "%viewContainer.title%",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "kiro-account-switcher": [
+        {
+          "id": "kiroAccountSwitcher.webviewPanel",
+          "name": "%view.accounts%",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "kiroAccountSwitcher.quickSwitch",
+        "title": "%cmd.quickSwitch%",
+        "category": "Kiro",
+        "icon": "$(arrow-swap)"
+      },
+      {
+        "command": "kiroAccountSwitcher.saveCurrent",
+        "title": "%cmd.saveCurrent%",
+        "category": "Kiro",
+        "icon": "$(add)"
+      },
+      {
+        "command": "kiroAccountSwitcher.switchAccount",
+        "title": "%cmd.switchAccount%",
+        "category": "Kiro",
+        "icon": "$(arrow-swap)"
+      },
+      {
+        "command": "kiroAccountSwitcher.refresh",
+        "title": "%cmd.refresh%",
+        "category": "Kiro",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "kiroAccountSwitcher.refreshAccount",
+        "title": "%cmd.refreshAccount%",
+        "category": "Kiro",
+        "icon": "$(sync)"
+      },
+      {
+        "command": "kiroAccountSwitcher.renameAccount",
+        "title": "%cmd.rename%",
+        "category": "Kiro",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "kiroAccountSwitcher.deleteAccount",
+        "title": "%cmd.delete%",
+        "category": "Kiro",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "kiroAccountSwitcher.moveUp",
+        "title": "%cmd.moveUp%",
+        "category": "Kiro",
+        "icon": "$(chevron-up)"
+      },
+      {
+        "command": "kiroAccountSwitcher.moveDown",
+        "title": "%cmd.moveDown%",
+        "category": "Kiro",
+        "icon": "$(chevron-down)"
+      },
+      {
+        "command": "kiroAccountSwitcher.signOutCurrent",
+        "title": "%cmd.signOut%",
+        "category": "Kiro",
+        "icon": "$(sign-out)"
+      },
+      {
+        "command": "kiroAccountSwitcher.exportAccounts",
+        "title": "%cmd.export%",
+        "category": "Kiro",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "kiroAccountSwitcher.importAccounts",
+        "title": "%cmd.import%",
+        "category": "Kiro",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "kiroAccountSwitcher.openCacheFolder",
+        "title": "%cmd.openCache%",
+        "category": "Kiro",
+        "icon": "$(folder-opened)"
+      },
+      {
+        "command": "kiroAccountSwitcher.copyUserId",
+        "title": "%cmd.copyUserId%",
+        "category": "Kiro",
+        "icon": "$(copy)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "kiroAccountSwitcher.quickSwitch",
+        "key": "ctrl+shift+k",
+        "mac": "cmd+shift+k"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "kiroAccountSwitcher.saveCurrent",
+          "when": "view == kiroAccountSwitcher.webviewPanel",
+          "group": "navigation@1"
+        },
+        {
+          "command": "kiroAccountSwitcher.refresh",
+          "when": "view == kiroAccountSwitcher.webviewPanel",
+          "group": "navigation@2"
+        },
+        {
+          "command": "kiroAccountSwitcher.signOutCurrent",
+          "when": "view == kiroAccountSwitcher.webviewPanel",
+          "group": "navigation@3"
+        },
+        {
+          "command": "kiroAccountSwitcher.exportAccounts",
+          "when": "view == kiroAccountSwitcher.webviewPanel",
+          "group": "secondary@1"
+        },
+        {
+          "command": "kiroAccountSwitcher.importAccounts",
+          "when": "view == kiroAccountSwitcher.webviewPanel",
+          "group": "secondary@2"
+        },
+        {
+          "command": "kiroAccountSwitcher.openCacheFolder",
+          "when": "view == kiroAccountSwitcher.webviewPanel",
+          "group": "secondary@3"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "%cfg.title%",
+      "properties": {
+        "kiroAccountSwitcher.syncBothTokenFiles": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "%cfg.syncBoth%"
+        },
+        "kiroAccountSwitcher.fetchEmailAndQuota": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "%cfg.fetchEmail%"
+        },
+        "kiroAccountSwitcher.autoReloadWindowOnSwitch": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "%cfg.autoReload%"
+        },
+        "kiroAccountSwitcher.statusBarAlignment": {
+          "type": "string",
+          "enum": ["left", "right"],
+          "default": "right",
+          "markdownDescription": "%cfg.statusBar%"
+        },
+        "kiroAccountSwitcher.showProgressBar": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "%cfg.progressBar%"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap",
+    "watch": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap --watch",
+    "typecheck": "tsc --noEmit",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0"
+  }
+}

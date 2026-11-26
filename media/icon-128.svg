@@ -1,0 +1,19 @@
+﻿<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#1a1b26'/>
+      <stop offset='100%' stop-color='#24283b'/>
+    </linearGradient>
+    <linearGradient id='k' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#6366f1'/>
+      <stop offset='100%' stop-color='#06b6d4'/>
+    </linearGradient>
+  </defs>
+  <rect width='128' height='128' rx='20' fill='url(#bg)'/>
+  <path d='M38 28v72' stroke='url(#k)' stroke-width='10' stroke-linecap='round'/>
+  <path d='M38 64l30-34' stroke='url(#k)' stroke-width='10' stroke-linecap='round'/>
+  <path d='M38 64l30 34' stroke='url(#k)' stroke-width='10' stroke-linecap='round'/>
+  <circle cx='90' cy='38' r='10' stroke='#06b6d4' stroke-width='5' fill='none'/>
+  <path d='M82 82l8 12 8-12' stroke='#06b6d4' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' fill='none'/>
+  <line x1='90' y1='68' x2='90' y2='94' stroke='#06b6d4' stroke-width='5' stroke-linecap='round'/>
+</svg>
